@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%=title%></title> 
+    </head>
+
+<style type="text/css">
+.navbar { width:80px; 
+            height : 50px; 
+            padding : 10px; margin: 0px; 
+            border: 1px solid black; 
+            list-style: none;
+            background-color: burlywood;
+            float : left};
+.subnav { border:2px solid black; width:100px; background-color: burlywood};
+#menu { height:100px; text-align: center}
+#root { margin:auto; width:1000px}
+#con { margin-top:50px; padding:10px; width:80%; height:600px; text-align: left; float:left}
+#side {margin-top:50px; padding:10px; width:15%; float:left;  border:1px solid gray}
+</style>
+
+    <body>
+     
+    <div id="root"> 
+        <div id="menu">
+            <ul>
+                <li class="navbar" style="margin-left:300px">
+                    <a href="/home" style="text-decoration:none;">홈</a>
+                </li>
+                <li class="navbar">
+                    <a href="/about" style="text-decoration:none">About</a>
+                </li>
+                <li class="navbar">
+                    <a href="/board" style="text-decoration:none">게시판</a>
+                </li>
+                <li class="navbar">
+                    <a href="/db" style="text-decoration:none">db조회</a>
+                </li>
+                <li class="navbar">
+                        <a href="/captcha" style="text-decoration:none">CAPTCHA</a>
+                </li>
+                <li class="navbar">
+                        <a href="/maps" style="text-decoration:none">MAPS</a>
+                </li>
+            </ul>                      
+        </div> 
+
+        <div id="side">
+            <% for(var i=0;i<30;i++){ %>
+                <li>사이드<%=i%></li>
+            <% } %>
+        </div>
+
+        <div id="con">
+            
+        <H1 style=""><%=title%></H1> <button onclick="location.href='/board/writeform'">글쓰기</button>
+        <Hr style="width:800px">
+        <p>안녕하세요. <%=title%> 페이지 입니다. 매우 반갑습니다.</p> 
+            <% for ( var i = 0 ; i < boards.length ; i++) { %>
+                글 <%=boards[i].id%> : <a href="" style="text-decoration:none"><%=boards[i].title %></a> <br>
+                <p style="background:#6CC7E1"><%=boards[i].description%> </p>
+                <% } %>
+        </div>
+        
+ 
+        <div id="footer">
+
+        </div>
+    </div>
+    </body>
+</html>

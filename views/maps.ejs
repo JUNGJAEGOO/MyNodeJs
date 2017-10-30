@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%=title%></title> 
+    </head>
+
+<style type="text/css">
+.navbar { width:80px; 
+            height : 50px; 
+            padding : 10px; margin: 0px; 
+            border: 1px solid black; 
+            list-style: none;
+            background-color: burlywood;
+            float : left};
+.subnav { border:2px solid black; width:100px; background-color: burlywood};
+#menu { height:100px; text-align: center}
+#root { margin:auto; width:1000px}
+#con { margin-top:50px; padding:10px; width:80%; height:600px; text-align: left; float:left}
+#side {margin-top:50px; padding:10px; width:15%; float:left;  border:1px solid gray}
+</style>
+
+    <body>
+     
+    <div id="root"> 
+        <div id="menu">
+            <ul>
+                <li class="navbar" style="margin-left:300px">
+                    <a href="/home" style="text-decoration:none;">홈</a>
+                </li>
+                <li class="navbar">
+                    <a href="/about" style="text-decoration:none">About</a>
+                </li>
+                <li class="navbar">
+                    <a href="/board" style="text-decoration:none">게시판</a>
+                </li>
+                <li class="navbar">
+                    <a href="/db" style="text-decoration:none">db조회</a>
+                </li>
+                <li class="navbar">
+                        <a href="/captcha" style="text-decoration:none">CAPTCHA</a>
+                </li>
+                <li class="navbar">
+                        <a href="/maps" style="text-decoration:none">MAPS</a>
+                </li>
+            </ul>                      
+        </div> 
+
+        <div id="side">
+            <% for(var i=0;i<30;i++){ %>
+                <li>사이드<%=i%></li>
+            <% } %>
+        </div>
+
+        <div id="con">
+            
+        <H1 style=""><%=title%></H1>
+        <Hr style="width:800px">
+        <p>안녕하세요. <%=title%> 페이지 입니다.</p> 
+
+        <div id="div_map" style="width:50%; height: 300px; float:left"></div>
+
+        <p style="clear:left"></p><br>
+        
+            <input id="search" style="width:300px; height:30px" type="text" placeholder="주소"> 
+            <button style="width:50px; height:40px" onclick="searchAddr()">검색</button> <br>
+            지번: <span id="zibun"></span><br>
+            x좌표: <span id="posx"></span><br>
+            y좌표: <span id="posy"></span><br>
+            
+            <input id="searchX" style="width:100px; height:30px" type="text" placeholder="X좌표"> 
+            <input id="searchY" style="width:100px; height:30px" type="text" placeholder="Y좌표"> 
+            <input id="searchFORM" style="width:200px; height:30px" type="text" placeholder="좌표형식"> 
+            <button style="width:50px; height:40px" onclick="searchAddr2()">검색</button> <br>
+            지번: <span id="zibun2"></span><br>
+
+        </div>
+        
+        
+
+        <div id="footer">
+
+        </div>
+    </div>
+    </body>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://alpha-api-maps.cloud.toast.com/maps/js/v1.0/map.js"></script>
+    <script>
+        Map.authentification("AVUusK71T19EADdX");
+    </script>
+    
+    <script type="text/javascript">
+        THINKMAP.initMap("div_map", 165406, 500198, 12, init, 2, 'i');
+        function init(){
+            //alert('init!');
+        }
+    </script>
+
+    <script type="text/javascript">
+        function searchAddr(){
+            var input = document.getElementById("search").value;
+           
+            $.getJSON('https://alpha-api-maps.cloud.toast.com/maps/v1.0/appkeys/AVUusK71T19EADdX/coordinates?query='+input, function(data) {
+                console.log(data);
+                 document.getElementById("zibun").innerHTML = data.address.adm[0].address;
+                 document.getElementById("posx").innerHTML = data.address.adm[0].posx
+                 document.getElementById("posy").innerHTML = data.address.adm[0].posy
+                 document.getElementById("search").value = "";
+            });
+        }
+    </script>
+
+        <script type="text/javascript">
+        function searchAddr2(){
+            var inputX = document.getElementById("searchX").value;
+            var inputY = document.getElementById("searchY").value;
+            var inputFORM = document.getElementById("searchFORM").value;
+            $.getJSON('https://alpha-api-maps.cloud.toast.com/maps/v1.0/appkeys/AVUusK71T19EADdX/addresses?posX='+inputX+'&posY='+inputY+'&coordtype='+inputFORM, function(data) {
+                console.log(data);
+                 document.getElementById("zibun2").innerHTML = data.location.adm.address;
+                 document.getElementById("search").value = "";
+            });
+        }
+    </script>
+</html>
+
