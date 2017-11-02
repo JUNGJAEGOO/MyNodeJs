@@ -5,65 +5,66 @@
         <title><%=title%></title> 
     </head>
 
-<style type="text/css">
-.navbar { width:80px; 
-            height : 50px; 
-            padding : 10px; margin: 0px; 
-            border: 1px solid black; 
-            list-style: none;
-            background-color: burlywood;
-            float : left};
-.subnav { border:2px solid black; width:100px; background-color: burlywood};
-#menu { height:100px; text-align: center}
-#root { margin:auto; width:1000px}
-#con { margin-top:50px; padding:10px; width:80%; height:600px; text-align: left; float:left}
-#side {margin-top:50px; padding:10px; width:15%; float:left; border:1px solid gray}
-</style>
+    <link rel='stylesheet' href="/custom.css">
 
     <body>
-     
+        
+        <% include ./menubar.ejs %>
+
     <div id="root"> 
-        <div id="menu">
-            <ul>
-                <li class="navbar" style="margin-left:300px">
-                    <a href="/home" style="text-decoration:none;">홈</a>
-                </li>
-                <li class="navbar">
-                    <a href="/about" style="text-decoration:none">About</a>
-                </li>
-                <li class="navbar">
-                    <a href="/board" style="text-decoration:none">게시판</a>
-                </li>
-                <li class="navbar">
-                    <a href="/db" style="text-decoration:none">db조회</a>
-                </li>
-                <li class="navbar">
-                    <a href="/captcha" style="text-decoration:none">CAPTCHA</a>
-                </li>
-                <li class="navbar">
-                    <a href="/maps" style="text-decoration:none">MAPS</a>
-                </li>
-            </ul>                      
-        </div> 
+     
 
         <div id="side">
-            <% for(var i=0;i<30;i++){ %>
-                <li>사이드<%=i%></li>
-            <% } %>
+            <li>
+                <a href="#">one</a>
+            </li>
+            
+            <img style="transform:translateY(1px)"id="zero" onmouseover="btnOn0()" onmouseout="btnOUT0()" src="/anigif2.jpg">
+            <img style="transform:translateY(-3px);" id="one" onmouseover="btnOn1()" onmouseout="btnOUT1()" src="/anigif.jpg">
+            <img style="transform:translateY(-6px)" id="two" onmouseover="btnOn2()" onmouseout="btnOUT2()" src="/crop.jpg"> 
+            
         </div>
 
         <div id="con">
             
         <H1 style=""><%=title%></H1>
-        <Hr style="width:800px">
+        <Hr>
         <p>안녕하세요. <%=title%> 페이지 입니다. 매우 반갑습니다.</p> 
-
+            <img src="http://imgnews.naver.com/image/076/2016/07/15/2016071601001245100088381_99_20160715104505.jpg">
+        
+            
+        
         </div>
         
- 
-        <div id="footer">
+       
 
-        </div>
+        
+
     </div>
+
+   <% include ./footer.ejs %>
+
+   
     </body>
+
+    <script type="text/javascript">
+        function btnOn0(){
+        document.getElementById('zero').src = "/anigif2.gif";
+        }
+        function btnOUT0(){
+        document.getElementById('zero').src = "/anigif2.jpg";
+        }
+        function btnOn1(){
+        document.getElementById('one').src = "/anigif.gif";
+        }
+        function btnOUT1(){
+        document.getElementById('one').src = "/anigif.jpg";
+        }
+        function btnOn2(){
+        document.getElementById('two').src = "/crop.gif";
+        }
+        function btnOUT2(){
+         document.getElementById('two').src = "/crop.jpg";    
+        }
+    </script>
 </html>
