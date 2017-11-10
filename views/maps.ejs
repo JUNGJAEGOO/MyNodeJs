@@ -7,27 +7,27 @@
 
     <link rel='stylesheet' href="/custom.css">
     <body>
-     
-    <div id="root"> 
         <% include ./menubar.ejs %>
+    <div id="root"> 
+        
 
-        <div id="side">
-           
-        </div>
+        <% include ./leftsidebar.ejs %>
 
         <div id="con">
+            <div id="con2">
             
         <H1 style=""><%=title%></H1>
         <Hr >
         <p>안녕하세요. <%=title%> 페이지 입니다.</p> 
 
-
+            </div>
         </div>
         
         
 
-        <% include ./footer.ejs %>
+        
     </div>
+    <% include ./footer.ejs %>
     </body>
 
 

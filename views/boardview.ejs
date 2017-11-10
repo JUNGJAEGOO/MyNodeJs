@@ -3,32 +3,66 @@
     <head>
         <meta charset="utf-8">
         <title><%=title%></title> 
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
 
     <link rel='stylesheet' href="/custom.css">
 
     <body>
-     
+            <% include ./menubar.ejs %> 
     <div id="root"> 
-        <% include ./menubar.ejs %> 
-
-        <div id="side">
         
-        </div>
+
+        <% include ./leftsidebar.ejs %>
 
         <div id="con">
-            
+            <div id="con2">
         <H1 style=""><%=title%></H1>
         <Hr >
-        <p> 제목 : <%=boardtitle %></p>
-        <p> 글쓴이 : <%=boardname %></p>
-        <p> <%=boardconts %></p> 
-        <button style="float:right" onclick="location.href='/board'">글 목록</button>
+        <table style="background:#E6E6E6; width:100%; margin-bottom:10px">
+            <tr>
+                <td>
+                    <strong>제 목 : <%=boardtitle %> </strong>
+                </td>
+            </tr>
+            <tr>
+                <td style="font-size:12px;">
+                    글쓴이 : <%=boardname %>
+                </td>
+                <td style="font-size:12px; border-left:1px solid gray; padding-left:10px">
+                    조회 : <%=boardview %>
+                </td>
+                <td style="font-size:12px; border-left:1px solid gray; padding-left:10px">
+                    날짜 : <%=boardtime %>
+                </td>
+            </tr>
 
+        
+        </table>
+        <table>
+            <tr>
+                <td style="height:600px auto">
+                    
+                    <%-boardconts %>
+                </td>
+            </tr> 
+        </table>
+        <br>
+        <button class="btn-1" style="float:right" onclick="location.href='/board'">글 목록</button>
+        <button class="btn-1" style="float:right" onclick="location.href='/board/modify?idx=<%=boardidx%>'">수정</button>
+        <button class="btn-1" style="float:right" onclick="location.href='/board/delete?idx=<%=boardidx%>'">삭제</button>   
         </div>
         
  
-        <% include ./footer.ejs %>
+     </div>
     </div>
+    <% include ./footer.ejs %>
     </body>
+
+    <script type="text/javascript">
+       
+    </script>
+    <script>
+
+    </script>
 </html>

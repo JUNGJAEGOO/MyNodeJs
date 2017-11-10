@@ -14,25 +14,35 @@
     <div id="root"> 
      
 
-        <div id="side">
-            <li>
-                <a href="#">one</a>
-            </li>
-            
-            <img style="transform:translateY(1px)"id="zero" onmouseover="btnOn0()" onmouseout="btnOUT0()" src="/anigif2.jpg">
-            <img style="transform:translateY(-3px);" id="one" onmouseover="btnOn1()" onmouseout="btnOUT1()" src="/anigif.jpg">
-            <img style="transform:translateY(-6px)" id="two" onmouseover="btnOn2()" onmouseout="btnOUT2()" src="/crop.jpg"> 
-            
-        </div>
+        <% include ./leftsidebar.ejs %>
 
         <div id="con">
-            
-        <H1 style=""><%=title%></H1>
+            <div id="con2">
+        <H1 ><%=title%></H1>
         <Hr>
-        <p>안녕하세요. <%=title%> 페이지 입니다. 매우 반갑습니다.</p> 
-            <img src="http://imgnews.naver.com/image/076/2016/07/15/2016071601001245100088381_99_20160715104505.jpg">
         
-            
+        <style type="text/css">
+        div img { height:100%; width:100%;}
+        .mainframe {height:15em;
+            width:33%;
+            border: 0.1px solid black;
+            float:left;
+            }
+        </style>
+        <div class="mainframe">
+            <img src="http://imgnews.naver.com/image/076/2016/07/15/2016071601001245100088381_99_20160715104505.jpg">
+        </div>
+        <div class="mainframe"><img src="http://cafefiles.naver.net/20160803_265/forme1229_1470224399100R1TSd_JPEG/image.jpeg"></div>
+        <div class="mainframe"><img src="http://imgnews.naver.com/image/311/2017/07/11/0000753086_001_20170711094153854.jpg"></div>
+        <div class="mainframe"><img src="http://cafefiles.naver.net/20160122_6/dhdydtlr3_1453448398967EgYNb_JPEG/740_IMG_20160122_145105.jpg"></div>
+        <div class="mainframe"><img src="http://blogfiles5.naver.net/20151102_110/romanticfx_1446448812801ROxfk_JPEG/NaverBlog_20151102_162012_08.jpg"></div>
+        <div class="mainframe"><img src="http://cafefiles.naver.net/MjAxNzA0MjhfNzQg/MDAxNDkzMzY4MTk0MTg0.nTjPSODrkL-dl9wrCK-C02fbUVAE5g4bzzrDK1qJ0vwg.9x5-lcWFrcHbbUyyj7pFQ-ezRMchHWpftmDjoYqIkwEg.JPEG.ibl7954/01ukygv.jpg"></div>
+        <div class="mainframe"><img src="http://cafefiles.naver.net/MjAxNzA0MjRfMTI0/MDAxNDkzMDExMDgwMzk0.Bn-gwDAlg1QaglmFLH-TpE3l5mhqD08oMuhMwerINqgg.N9qT7MzpveidbRFwv5PIDMPIz5l-jWe-pJNK6gCNX9Yg.JPEG.kidcap17/externalFile.jpg"></div>
+        <div class="mainframe"><img src="http://blogfiles5.naver.net/MjAxNjEyMjNfMTIy/MDAxNDgyNDY5MjY2MDg1.6yrqvP6oxX47aBbOro0KbqU8e1fvoB6azSzgAWXK7psg.Op6zaisdJT0tx3IeSzwx3UJVA56SxYQLfjFY50HNBEgg.JPEG.gksqudgkr85/%C6%AE%BF%CD%C0%CC%BD%BA%BB%E7%B3%AA_%C7%B0%BF%A1_%BE%C8%B1%E4_%C0%CE%C7%FC%C0%CC_%BA%CE%B7%B4%B4%D9_%BB%E7%B3%AA_%C0%CC%BB%B5%BF%E4_%BC%BD%BD%C3%B9%CC_%B1%CD%BF%E4%B9%CC_%BE%C6%B8%A7%B4%E4%B4%D9_%281%29.jpg"></div>
+        <div class="mainframe"><img src="http://imgnews.naver.com/image/5095/2017/01/25/0000381920_001_20170125145634829.jpg"></div>
+        
+        
+            </div>
         
         </div>
         
@@ -48,23 +58,6 @@
     </body>
 
     <script type="text/javascript">
-        function btnOn0(){
-        document.getElementById('zero').src = "/anigif2.gif";
-        }
-        function btnOUT0(){
-        document.getElementById('zero').src = "/anigif2.jpg";
-        }
-        function btnOn1(){
-        document.getElementById('one').src = "/anigif.gif";
-        }
-        function btnOUT1(){
-        document.getElementById('one').src = "/anigif.jpg";
-        }
-        function btnOn2(){
-        document.getElementById('two').src = "/crop.gif";
-        }
-        function btnOUT2(){
-         document.getElementById('two').src = "/crop.jpg";    
-        }
+
     </script>
 </html>

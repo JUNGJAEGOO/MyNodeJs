@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%=title%></title> 
+    </head>
+
+    <link rel='stylesheet' href="/custom.css">
+    <body>
+     
+    <div id="root"> 
+        <% include ./menubar.ejs %>
+
+        <% include ./leftsidebar.ejs %>
+
+        <div id="con">
+            
+        <H1 style=""><%=title%></H1>
+        <Hr >
+        <p>안녕하세요. <%=title%> 페이지 입니다. 반갑습니다.</p> 
+        
+        <form id="sub" style="border:1px solid black; padding:20px; background:#EBE7E7" method="post" action="/signsuccess">
+        아이디 : <input type="text" id="id" name="id"> <button type="button">중복 체크</button> <br> 
+        비밀번호 : <input type="password" id="p1" name="password"> <br>
+        비밀번호 확인 : <input type="password" id="p2"> <br>
+        이름 : <input type="text" id="name" name="name"><br>
+        주민번호 앞자리 : <input id="birth" style="width:80px" type="text" name="birth"> <br>
+        전화번호: :  <input type="text" id="phone" style="width:100px" name="phone"> '-' 없이 입력하세요. ex)01011111111 <br>
+        이메일 : <input type="text" id="email" style="width:300px" name="email"> <br><br>
+        <input type="button" value="가입 양식 제출" onclick="check()"> <br>
+        </form>
+        
+        </div>
+        
+ 
+        <% include ./footer.ejs %>
+    </div>
+    </body>
+    
+    <script type="text/javascript">
+    function check(){
+        if ( document.getElementById('id').value == "" ){
+            alert("id를 입력해주세요!");
+            return;
+        }
+        if ( document.getElementById('p1').value == "" || document.getElementById('p2').value == "" ){
+            alert("비밀번호를 입력해주세요!");
+            return;
+        }
+        if ( document.getElementById('p1').value != document.getElementById('p2').value ){
+            alert("비밀번호 입력을 다시 확인 해주세요!");
+            document.getElementById('p1').value = "";
+            document.getElementById('p2').value = "";
+            return;
+        }
+        if ( document.getElementById('name').value == "" ){
+            alert("이름를 입력해주세요!");
+            return;
+        }
+        if ( document.getElementById('birth').value == "" ){
+            alert("주민번호 앞자리를 입력해주세요!");
+            return;
+        }
+        if ( document.getElementById('phone').value == "" ){
+            alert("전화번호를 입력해주세요!");
+            return;
+        }
+        if ( document.getElementById('email').value == "" ){
+            alert("이메일을 입력해주세요!");
+            return;
+        }
+        document.sub.submit();
+        
+    }   
+    </script>
+</html>
