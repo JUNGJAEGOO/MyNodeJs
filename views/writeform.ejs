@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title><%=title%></title> 
+
     </head>
 
     <link rel='stylesheet' href="/custom.css">
@@ -44,15 +45,19 @@
         function beforego(){
             if(document.getElementById('name').value == ""){
                 alert('작성자명을 입력해 주세요!');
+                return;
             }
             if(document.getElementById('password').value == ""){
                 alert('글 비밀번호를 입력해 주세요!');
+                return;
             }
             if(document.getElementById('title').value == ""){
                 alert('제목을 입력해 주세요!');
+                return;
             }
             if(document.getElementById('description').value == ""){
                 alert('내용을 입력해 주세요!');
+                return;
             }
             
             document.getElementById('sub').submit();

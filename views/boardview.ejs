@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <title><%=title%></title> 
         <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <link rel="stylesheet" href="/shCoreDefault.css"></style>
+        <link rel="stylesheet" href="/shThemeDefault.css"></style>
+        <script type="text/javascript" src="/shCore.js"></script>
+        <script type="text/javascript" src="/shBrushJava.js"></script>
+        <script type="text/javascript">SyntaxHighlighter.config.BloggerMode = false; SyntaxHighlighter.all(); </script>
     </head>
 
     <link rel='stylesheet' href="/custom.css">
@@ -41,7 +46,7 @@
         </table>
         <table>
             <tr>
-                <td style="height:600px auto">
+                <td id="content" style="height:600px auto">
                     
                     <%-boardconts %>
                 </td>
@@ -50,7 +55,11 @@
         <br>
         <button class="btn-1" style="float:right" onclick="location.href='/board'">글 목록</button>
         <button class="btn-1" style="float:right" onclick="location.href='/board/modify?idx=<%=boardidx%>'">수정</button>
-        <button class="btn-1" style="float:right" onclick="location.href='/board/delete?idx=<%=boardidx%>'">삭제</button>   
+        <form method="post" action="/board/ensuredelete">
+            <input type="text" hidden="hidden" value="<%=boardidx%>" name="idx">
+            <input type="text" hidden="hidden" value="<%=boardpassword%>" name="password">
+        <button class="btn-1" type="submit" style="float:right">삭제</button>
+        </form>   
         </div>
         
  
@@ -60,7 +69,7 @@
     </body>
 
     <script type="text/javascript">
-       
+ 
     </script>
     <script>
 
