@@ -93,9 +93,19 @@ app.post('/board/writeupdate',function(req,res){
     res.redirect('/board');
 });
 
-app.get('/board/delete',function(req,res){
-    var idx = req.param('idx');
+app.post('/board/ensuredelete',function(req,res){
+    var idx = req.param("idx");
+    var pass = req.param("password");
+    res.render('ensuredelete',{idx:idx, password:pass});
     
+
+})
+
+app.post('/board/delete',function(req,res){
+    var idx = req.body.idx;
+
+
+
     pool.getConnection(function(err,connection){
         if( err){
             console.error(err);
@@ -176,7 +186,7 @@ app.get('/board/boardview',function(req,res){
                 }
                else{
                     res.render('boardview',{title : '글 보기', boardidx : result[0].idx,
-                    boardtitle: result[0].title, boardname: result[0].name, 
+                    boardtitle: result[0].title, boardname: result[0].name, boardpassword : result[0].password,
                     boardconts: result[0].description.replace(/\r\n/g,'<br>'), boardtime:result[0].date, boardview:result[0].view});
                     connection.release();
                     }
